@@ -9,7 +9,7 @@ while getopts npi; do
 done
 shift $(( $OPTIND - 1 ))
 
-docker run -it --privileged \
+docker run --privileged -d \
 	${USE_HOST_NET:+--net=host} \
 	$(USE_HOST_PID:+--pid=host} \
 	${USE_HOST_IPC:+--ipc=host} \
