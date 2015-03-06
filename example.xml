@@ -1,6 +1,5 @@
 <domain type="kvm">
   <name>example</name>
-  <uuid>ae45fe5f-14c8-4a40-bdb8-9c9cd83a817f</uuid>
   <memory>524288</memory>
   <currentMemory>524288</currentMemory>
   <vcpu>1</vcpu>
@@ -28,7 +27,7 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type="file" device="disk">
       <driver name="qemu" type="qcow2"/>
-      <source file="/var/lib/libvirt/images/cirros-0.3.3-x86_64-disk.img"/>
+      <source file="/var/lib/libvirt/images/cirros.img"/>
       <target dev="hda" bus="ide"/>
     </disk>
     <controller type="usb" index="0" model="ich9-ehci1"/>
