@@ -10,4 +10,3 @@ else
 fi
 
 exec "$@"
-

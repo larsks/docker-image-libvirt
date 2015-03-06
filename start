@@ -1,5 +1,18 @@
+#!/bin/sh
+
+while getopts npi; do
+	case $OPTARG in
+	(n)	USE_HOST_NET=1;;
+	(p)	USE_HOST_PID=1;;
+	(i)	USE_HOST_IPC=1;;
+	esac
+done
+shift $(( $OPTIND - 1 ))
+
 docker run -it --privileged \
-	--net=host --pid=host --ipc=host \
+	${USE_HOST_NET:+--net=host} \
+	$(USE_HOST_PID:+--pid=host} \
+	${USE_HOST_IPC:+--ipc=host} \
 	-v /var/lib/libvirt:/var/lib/libvirt:rw \
 	-v /var/run/libvirt:/var/run/libvirt:rw \
 	-v /sys/fs/cgroup:/sys/fs/cgroup:rw \
