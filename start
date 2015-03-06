@@ -1,0 +1,5 @@
+docker run -it --privileged \
+	--net=host --pid=host --ipc=host \
+	-v /var/lib/libvirt:/var/lib/libvirt \
+	-v /sys/fs/cgroup:/sys/fs/cgroup \
+	larsks/libvirt
