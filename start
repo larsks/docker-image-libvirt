@@ -1,7 +1,7 @@
 #!/bin/sh
 
-while getopts npi; do
-	case $OPTARG in
+while getopts npi ch; do
+	case $ch in
 	(n)	USE_HOST_NET=1;;
 	(p)	USE_HOST_PID=1;;
 	(i)	USE_HOST_IPC=1;;
@@ -11,7 +11,7 @@ shift $(( $OPTIND - 1 ))
 
 docker run --privileged -d \
 	${USE_HOST_NET:+--net=host} \
-	$(USE_HOST_PID:+--pid=host} \
+	${USE_HOST_PID:+--pid=host} \
 	${USE_HOST_IPC:+--ipc=host} \
 	--device /dev/kvm:/dev/kvm \
 	-v /var/lib/libvirt:/var/lib/libvirt:rw \
